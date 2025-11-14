@@ -31,7 +31,10 @@ jobs:
           echo "$DEPLOY_KEY" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           echo "$KNOWN_HOSTS" > ~/.ssh/known_hosts
-
+      - name: Debug Host
+        run: |
+          echo "Using HOST: $HOST"
+          echo "Using USER: $USER"
       - name: Deploy to FastPanel
         run: |
           rsync -avz --delete dist/ $USER@$HOST:/var/www/damir/data/www/damirmedia.ru/todo/
