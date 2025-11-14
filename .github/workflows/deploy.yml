@@ -2,18 +2,24 @@ name: Deploy Vite Frontend
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
+    env:
+      HOST: ${{ secrets.HOST }}
+      USER: ${{ secrets.USER }}
+      DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+      KNOWN_HOSTS: ${{ secrets.KNOWN_HOSTS }}
+
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20
@@ -24,6 +30,11 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Debug variables
+        run: |
+          echo "USER='$USER'"
+          echo "HOST='$HOST'"
+
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
@@ -31,6 +42,6 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           echo "$KNOWN_HOSTS" > ~/.ssh/known_hosts
 
-      - name: Deploy files to FastPanel
+      - name: Deploy files
         run: |
           rsync -avz --delete dist/ $USER@$HOST:/var/www/damir/data/www/damirmedia.ru/todo/
