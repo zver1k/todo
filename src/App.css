@@ -28,7 +28,7 @@
   align-items: center;
   gap: 20px;
   width: 500px;
-  padding: 16px;
+  padding: 40px;
   border: 1px solid var(--secondary-color-light);
   border-radius: var(--border-radius);
 }
@@ -37,7 +37,7 @@
   font-weight: 300;
 }
 
-.main__tasks {
+.main__tasks-count {
   color: var(--secondary-color-dark);
   font-size: 28px;
   font-weight: 700;
@@ -55,12 +55,18 @@
 }
 
 .main__input {
-  width: 350px;
+  width: 380px;
+  height: 40px;
   border: none;
   border-radius: var(--border-radius);
   background-color: var(--secondary-color-gray);
   padding: 5px;
   text-align: center;
+  color: var(--primary-color);
+}
+
+.main__input:focus {
+  outline-color: var(--primary-color);
 }
 
 .main__btn {
@@ -70,10 +76,42 @@
   justify-content: center;
   align-items: center;
   font-size: 20px;
-  border: none;
   border-radius: 50%;
   background: var(--secondary-color);
   color: var(--secondary-color-dark);
-  cursor: pointer;
 }
 
+.main__tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.main__task {
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  width: 500px;
+  padding: 16px;
+  border: 1px solid var(--secondary-color-light);
+  border-radius: var(--border-radius);
+}
+
+.main__task-complete {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 50%
+}
+
+.main__task-complete--done {
+  background-color: #58cc4c;
+  border: none;
+}
+
+.footer__logo {
+  filter: invert(1) brightness(0.5) contrast(0.5);
+}
