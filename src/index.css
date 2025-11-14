@@ -28,4 +28,11 @@ a {
   text-decoration: none;
 }
 
+button {
+  border: none;
+  cursor: pointer;
+  background: none;
+  color: var(--primary-color);
+}
+
 
