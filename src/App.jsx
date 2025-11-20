@@ -6,6 +6,8 @@ import {
 import {useState} from "react";
 import TaskForm from "./components/TaskForm/";
 import TaskList from "./components/TaskList/";
+import Footer from "./components/Footer/";
+import Header from "./components/Header/";
 
 
 function App() {
@@ -46,37 +48,13 @@ const completeTasks = tasks.filter(task => task.completed);
       <main className="main">
         <div className="main__wrapper">
 
-          <div className="main__header">
-            <div className="main__header-title">
-              <h2 className="main__title">Выполнено задач</h2>
-              {completeTasks.length === 0
-            ?  (<h3 className="main__subtitle">ты сможешь</h3>)
-            :  (<h3 className="main__subtitle">так держать</h3>)}
-            </div>
-
-            {/* Счётчик задач */}
-            <div className="main__tasks-count">
-              {completeTasks.length}/{tasks.length}
-            </div>
-          </div>
+          <Header tasks={tasks} completeTasks={completeTasks} />
 
           <TaskForm addTask={addTask} />
 
           <TaskList tasks={tasks} completeTask={completeTask} deleteTask={deleteTask} />
           
-          <footer className="footer">
-            <div className="main__footer">
-              <a href="https://damirmedia.ru">
-                <img
-                  className="footer__logo"
-                  src="https://damirmedia.ru/logo.png"
-                  alt="Логотип разработчика DamirMedia"
-                  width="140"
-                  loading="lazy"
-                />
-              </a>
-            </div>
-          </footer>
+          <Footer />
 
         </div>
       </main>
