@@ -81,6 +81,10 @@
   color: var(--secondary-color-dark);
 }
 
+.main__btn:hover {
+  background: var(--primary-color);
+}
+
 .main__tasks-list {
   display: flex;
   flex-direction: column;
@@ -107,9 +111,21 @@
   border-radius: 50%
 }
 
+.main__task-complete:hover {
+  background: var(--primary-color);
+}
+
 .main__task-complete--done {
-  background-color: #58cc4c;
+  background-color: var(--primary-color-active);
   border: none;
+}
+
+.main__task-text {
+  font-size: 18px;
+}
+
+.main__task-text--done {
+  text-decoration: line-through;
 }
 
 .footer__logo {
