@@ -1,10 +1,12 @@
-import {useState} from "react";
+import {useRef, useState} from "react";
 import {AiOutlinePlus} from "react-icons/ai";
 
 function TaskForm( {addTask} ) {
   const [title, setTitle] = useState("");
+  const inputRef = useRef(null);
   function handleSubmit(e) {
     e.preventDefault();
+    inputRef.current?.focus();
     addTask({title});
     if (title.trim()) {
       setTitle("");
@@ -16,6 +18,7 @@ function TaskForm( {addTask} ) {
     <form action="" className="main__body" onSubmit={handleSubmit}>
       <label className="main__label">
         <input
+          ref={inputRef}
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           className="main__input"
