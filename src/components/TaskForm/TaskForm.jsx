@@ -1,5 +1,6 @@
 import {useRef, useState} from "react";
 import {AiOutlinePlus} from "react-icons/ai";
+import Button from "../Button/";
 
 function TaskForm( {addTask} ) {
   const [title, setTitle] = useState("");
@@ -13,10 +14,9 @@ function TaskForm( {addTask} ) {
     }
   }
 
-
   return (
-    <form action="" className="main__body" onSubmit={handleSubmit}>
-      <label className="main__label">
+    <form className="main__body" onSubmit={handleSubmit}>
+      <div className="main__field">
         <input
           ref={inputRef}
           value={title}
@@ -26,13 +26,12 @@ function TaskForm( {addTask} ) {
           placeholder="напишите задачу"
           required
         />
-      </label>
+      </div>
 
-      <button
-        className="main__btn"
-        type="submit">
+      <Button className="main__button" type="submit">
         <AiOutlinePlus />
-      </button>
+      </Button>
+
     </form>
   )
 }

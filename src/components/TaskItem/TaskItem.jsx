@@ -1,15 +1,16 @@
 import {FiEdit} from "react-icons/fi";
 import {AiOutlineClose} from "react-icons/ai";
+import Button from "../Button/";
 
 function TaskItem({task, completeTask, deleteTask}) {
   const { id, title, completed } = task;
   return (
         <li className="main__task">
-          <button
+          <Button
             onClick={() => completeTask(id)}
             className={`main__task-complete ${completed ? "main__task-complete--done" : ""}`}
           >
-          </button>
+          </Button>
 
           <span
             className={`main__task-text ${completed ? "main__task-text--done" : ""}`}
@@ -18,18 +19,17 @@ function TaskItem({task, completeTask, deleteTask}) {
           </span>
 
           <div className="main__task-buttons">
-            <button
-              className="main__task-edit"
-            >
-              <FiEdit />
-            </button>
 
-            <button
+            <Button className="main__task-edit">
+              <FiEdit />
+            </Button>
+
+            <Button
               onClick={() => deleteTask(id)}
               className="main__task-remove"
             >
               <AiOutlineClose />
-            </button>
+            </Button>
           </div>
         </li>
 
