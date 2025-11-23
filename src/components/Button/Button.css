@@ -1,0 +1,17 @@
+.main__button {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  border-radius: 50%;
+  background: var(--secondary-color);
+  color: var(--secondary-color-dark);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.main__button:hover {
+  background: var(--primary-color);
+  color: #fff;
+}
