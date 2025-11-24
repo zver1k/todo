@@ -1,5 +1,5 @@
 import './App.css'
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import TaskForm from "./components/TaskForm/";
 import TaskList from "./components/TaskList/";
 import Footer from "./components/Footer/";
@@ -10,14 +10,23 @@ import Header from "./components/Header/";
 function App() {
 
 const [isLogin, setIsLogin] = useState(true);
-const [tasks, setTasks] = useState([]);
+const [tasks, setTasks] = useState(() => {
+  const savedTasks = localStorage.getItem("tasks");
+  return savedTasks ? JSON.parse(savedTasks) : [];
+});
 
-  function addTask(task) {
-    setTasks(prev => [
-      ...prev,
-      { ...task, completed: false, id: crypto.randomUUID() }
-    ]);
-  }
+
+
+function addTask(task) {
+  setTasks(prev => [
+    ...prev,
+    { ...task, completed: false, id: crypto.randomUUID() }
+  ]);
+}
+
+useEffect(() => {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}, [tasks])
 
 function deleteTask(id) {
   setTasks(tasks.filter((task) => task.id !== id));
