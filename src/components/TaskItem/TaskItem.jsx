@@ -1,9 +1,11 @@
 import {FiEdit} from "react-icons/fi";
-import {AiOutlineClose} from "react-icons/ai";
+import {AiOutlineClose, AiOutlineSave} from "react-icons/ai";
 import Button from "../Button/";
+import {useState} from "react";
 
-function TaskItem({task, completeTask, deleteTask}) {
-  const { id, title, completed } = task;
+function TaskItem({ task, completeTask, deleteTask, editTask, saveTask }) {
+  const { id, title, completed, isEdit } = task;
+  const [tempTitle, setTempTitle] = useState(title);
   return (
         <li className="main__task">
           <Button
@@ -12,17 +14,43 @@ function TaskItem({task, completeTask, deleteTask}) {
           >
           </Button>
 
-          <span
-            className={`main__task-text ${completed ? "main__task-text--done" : ""}`}
-          >
-            {title}
-          </span>
+          {!isEdit && (
+            <span
+              className={`main__task-text ${
+                completed ? "main__task-text--done" : ""
+              }`}
+            >
+              {title}
+            </span>
+          )}
+
+          {isEdit && (
+            <input
+              value={tempTitle}
+              onChange={e => setTempTitle(e.target.value)}
+              autoFocus
+            />
+          )}
 
           <div className="main__task-buttons">
 
-            <Button className="main__task-edit">
-              <FiEdit />
-            </Button>
+            {!isEdit && (
+              <Button
+                onClick={() => editTask(id)}
+                className="main__task-edit"
+              >
+                <FiEdit />
+              </Button>
+            )}
+
+            {isEdit && (
+              <Button
+                onClick={() => saveTask(id, tempTitle)}
+                className="main__task-edit"
+              >
+                <AiOutlineSave />
+              </Button>
+            )}
 
             <Button
               onClick={() => deleteTask(id)}

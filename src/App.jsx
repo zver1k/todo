@@ -15,12 +15,10 @@ const [tasks, setTasks] = useState(() => {
   return savedTasks ? JSON.parse(savedTasks) : [];
 });
 
-
-
 function addTask(task) {
   setTasks(prev => [
     ...prev,
-    { ...task, completed: false, id: crypto.randomUUID() }
+    { ...task, completed: false, isEdit: false, id: crypto.randomUUID() }
   ]);
 }
 
@@ -38,6 +36,18 @@ function completeTask(id) {
   ));
 }
 
+function editTask(id) {
+  setTasks(tasks.map(task =>
+    task.id === id ? { ...task, isEdit: !task.isEdit } : task
+  ));
+}
+
+  function saveTask(id, newTitle) {
+    setTasks(tasks.map(task =>
+      task.id === id ? { ...task, title: newTitle, isEdit: false } : task
+    ));
+  }
+
 const activeTasks = tasks.filter(task => !task.completed);
 const completeTasks = tasks.filter(task => task.completed);
 
@@ -48,11 +58,20 @@ const completeTasks = tasks.filter(task => task.completed);
       <main className="main">
         <div className="main__wrapper">
 
-          <TaskHeader tasks={tasks} completeTasks={completeTasks} />
+          <TaskHeader
+            tasks={tasks}
+            completeTasks={completeTasks}
+          />
 
           <TaskForm addTask={addTask} />
 
-          <TaskList tasks={tasks} completeTask={completeTask} deleteTask={deleteTask} />
+          <TaskList
+            tasks={tasks}
+            completeTask={completeTask}
+            deleteTask={deleteTask}
+            editTask={editTask}
+            saveTask={saveTask}
+          />
           
           <Footer />
 
