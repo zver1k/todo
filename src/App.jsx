@@ -13,7 +13,7 @@ const [isLogin, setIsLogin] = useState(true);
 const [tasks, setTasks] = useState([]);
 
 function addTask(task) {
-  setTasks([...tasks, {...task, completed: false, id: Date.now()}]);
+  setTasks([...tasks, {...task, completed: false, id: crypto.randomUUID()}]);
 }
 
 function deleteTask(id) {
