@@ -12,9 +12,12 @@ function App() {
 const [isLogin, setIsLogin] = useState(true);
 const [tasks, setTasks] = useState([]);
 
-function addTask(task) {
-  setTasks([...tasks, {...task, completed: false, id: crypto.randomUUID()}]);
-}
+  function addTask(task) {
+    setTasks(prev => [
+      ...prev,
+      { ...task, completed: false, id: crypto.randomUUID() }
+    ]);
+  }
 
 function deleteTask(id) {
   setTasks(tasks.filter((task) => task.id !== id));
