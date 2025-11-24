@@ -40,6 +40,10 @@
 }
 
 .main__tasks-count {
+  display: flex;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
   color: var(--secondary-color-dark);
   font-size: 28px;
   font-weight: 700;
@@ -106,10 +110,6 @@
   border-radius: 50%
 }
 
-.main__task-complete:hover {
-  background: var(--primary-color);
-}
-
 .main__task-complete--done {
   background-color: var(--primary-color-active);
   border: none;
@@ -147,5 +147,11 @@
 
   .main__body {
     flex-direction: column;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .main__task-complete:hover {
+    background: var(--primary-color);
   }
 }

@@ -11,7 +11,8 @@
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-.main__button:hover {
-  background: var(--primary-color);
-  color: #fff;
+@media (hover: hover) and (pointer: fine) {
+  .main__button:hover {
+    background: var(--primary-color);
+  }
 }
