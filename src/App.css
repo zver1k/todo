@@ -1,9 +1,18 @@
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  text-align: center;
   padding: 20px 40px;
   font-size: 28px;
   font-weight: 700;
+}
+
+.header__logo,
+.header__auth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .header__logo-part--second {
@@ -143,10 +152,12 @@
   .main__header {
     flex-direction: column;
     gap: 0;
+    padding: 10px;
   }
 
   .main__body {
     flex-direction: column;
+    gap: 10px;
   }
 }
 
