@@ -35,6 +35,20 @@ button {
   color: var(--primary-color);
 }
 
+input {
+  width: 100%;
+  max-width: 300px;
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: var(--secondary-color-gray);
+  padding: 10px 15px;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+input:focus {
+    outline-color: var(--primary-color);
+}
 
 
 
