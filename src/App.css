@@ -110,6 +110,11 @@
   padding: 16px;
   border: 1px solid var(--secondary-color-light);
   border-radius: var(--border-radius);
+  transition: background 0.3s ease;
+}
+
+.main__task-complete:active {
+  background: var(--primary-color);
 }
 
 .main__task-complete {
@@ -156,8 +161,11 @@
   }
 
   .main__body {
-    flex-direction: column;
     gap: 10px;
+  }
+
+  .main__wrapper {
+    gap: 20px;
   }
 }
 

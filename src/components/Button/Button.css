@@ -8,7 +8,11 @@
   border-radius: 50%;
   background: var(--secondary-color);
   color: var(--secondary-color-dark);
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background 0.3s ease;
+}
+
+.main__button:active {
+  background: var(--primary-color);
 }
 
 @media (hover: hover) and (pointer: fine) {
