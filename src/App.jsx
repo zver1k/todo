@@ -66,11 +66,12 @@ const completeTasks = tasks.filter(task => task.completed);
           <TaskForm addTask={addTask} />
 
           <TaskList
-            tasks={tasks}
             completeTask={completeTask}
             deleteTask={deleteTask}
             editTask={editTask}
             saveTask={saveTask}
+            activeTasks={activeTasks}
+            completeTasks={completeTasks}
           />
           
           <Footer />
