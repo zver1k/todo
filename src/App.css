@@ -90,7 +90,6 @@
 .main__task {
   font-size: 18px;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   gap: 20px;
@@ -107,6 +106,7 @@
 }
 
 .main__task-complete {
+  flex: 0 0 44px;
   width: 44px;
   height: 44px;
   border: 1px solid var(--secondary-color);
@@ -120,6 +120,8 @@
 
 .main__task-text {
   font-size: 18px;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .main__task-text--done {
